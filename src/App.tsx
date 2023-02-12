@@ -1,23 +1,25 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import { initAxios } from './axios.config';
+import { PokemonList } from './pages/pokemonsList/pokemonsList';
 
 function App() {
+  const [isSetupCompleted, setIsSetupCompleted] = useState(false);
+
+  useEffect(() => {
+    initAxios()
+    setIsSetupCompleted(true)
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {isSetupCompleted && (
+          <>
+            <PokemonList />
+          </>
+        )}
       </header>
     </div>
   );

@@ -1,0 +1,47 @@
+.PokemonBasicStats {
+    align-items: center;
+    background-color: #e8f0e1;
+    border-radius: 17px;
+    display: flex;
+    font-size: 14px;
+    height: 25px;
+    justify-content: space-between;
+
+    * {
+        align-items: center;
+        display: flex;
+        height: 100%;
+    }
+
+    &>* {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    &__stat {
+        align-items: center;
+        border-radius: 17px;
+        color: #fff;
+        margin: 0 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        &>span{
+            align-items: end;
+            font-size: 10px;
+            padding-bottom: 6px;
+        }
+
+        &--label {
+            text-transform: uppercase;
+        }
+
+        &--hp {
+            background-color: #71edb9;
+        }
+
+        &--cp{
+            background-color: #c35fff;
+        }
+    }
+}

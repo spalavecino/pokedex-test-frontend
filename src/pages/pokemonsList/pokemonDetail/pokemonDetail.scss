@@ -1,0 +1,55 @@
+.PokemonDetail {
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    padding: 15px 0;
+
+    &>img {
+        height: auto;
+        padding: 15px;
+        width: 150px;
+    }
+
+    &:hover{
+        >img{
+            animation: .5s ease-in-out infinite bounce-slow;
+        }
+    }
+
+    &__info-container{
+        align-items: start;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__name {
+        color: #44696c;
+        font-size: 21px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    &__types{
+        color: #333;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+}
+
+@keyframes bounce-slow {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translateY(1px);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
