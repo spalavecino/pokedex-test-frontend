@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { useDebounce } from "../../hooks/useDebounce";
 import { useGetPokemons } from "../../hooks/useFetchData"
 import { PokemonDetail } from "./pokemonDetail/pokemonDetail"
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import './pokemonList.scss'
 
 export const PokemonListPage = () => {
@@ -11,14 +13,20 @@ export const PokemonListPage = () => {
     const pokemons = useGetPokemons(page)
     const inputRef = useRef(null);
     const debouncedInput = useDebounce(input, 800)
+    const navigate = useNavigate();
     const enabledComparison = pokemonsToCompare.length === 2
 
-    const handleCheckComparison = (pokemonName: string) => {
-        if (pokemonsToCompare.includes(pokemonName)) {
-            setPokemonsToCompare(pokemonsToCompare.filter(p => p !== pokemonName))
+    const handleCheckComparison = (pokemonUrl: string) => {
+        if (pokemonsToCompare.includes(pokemonUrl)) {
+            setPokemonsToCompare(pokemonsToCompare.filter(p => p !== pokemonUrl))
         } else {
-            setPokemonsToCompare([...pokemonsToCompare, pokemonName])
+            setPokemonsToCompare([...pokemonsToCompare, pokemonUrl])
         }
+    }
+
+    const goToCompare = () => {
+        const pokemonIds = pokemonsToCompare.map(p => p.replace(`${axios.defaults.baseURL!!}pokemon/`, ''))
+        navigate(`compare/${pokemonIds[0]}${pokemonIds[1]}`)
     }
 
     const filteredPokemons = useMemo(() => {
@@ -64,16 +72,16 @@ export const PokemonListPage = () => {
                     <input
                         type="checkbox"
                         key={pokemon.url}
-                        checked={pokemonsToCompare.includes(pokemon.name)}
-                        onChange={() => handleCheckComparison(pokemon.name)}
-                        disabled={enabledComparison && !pokemonsToCompare.includes(pokemon.name)}
+                        checked={pokemonsToCompare.includes(pokemon.url)}
+                        onChange={() => handleCheckComparison(pokemon.url)}
+                        disabled={enabledComparison && !pokemonsToCompare.includes(pokemon.url)}
                     />
                     <PokemonDetail pokemon={pokemon} key={pokemon.url} />
                 </>
             ))}
             {enabledComparison && (
                 <footer className="PokemonList__footer">
-                    <button className="PokemonList__button-compare">Compare</button>
+                    <button className="PokemonList__button-compare" onClick={goToCompare}>Compare</button>
                 </footer>
             )}
         </>

@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { PokemonInfoPage } from './pages/pokemonInfo/pokemonInfo';
+import { ComparisonPage } from './pages/comparison/comparison';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "pokemon-info/:id",
     element: <PokemonInfoPage />,
+  },
+  {
+    path: "compare/:pokemon1/:pokemon2",
+    element: <ComparisonPage />,
   },
 ]);
 
@@ -32,11 +37,6 @@ function App() {
     <>
       <div className="App">
         {isSetupCompleted && <RouterProvider router={router} />}
-        {/* {isSetupCompleted && (
-          <>
-            <PokemonListPage page={page} />
-          </>
-        )} */}
       </div>
     </>
   );
