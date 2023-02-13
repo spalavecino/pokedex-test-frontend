@@ -6,6 +6,8 @@
     font-size: 14px;
     height: 25px;
     justify-content: space-between;
+    margin-bottom: 15px;
+    width: 100%;
 
     * {
         align-items: center;
@@ -15,24 +17,29 @@
 
     &>* {
         padding-left: 10px;
-        padding-right: 10px;
+
+        &:not(:last-child) {
+            padding-right: 10px;
+        }
     }
 
     &__stat {
         align-items: center;
         border-radius: 17px;
         color: #fff;
-        margin: 0 10px;
+        font-size: 14px;
+        margin-left: 10px;
         padding-left: 10px;
         padding-right: 10px;
 
-        &>span{
+        &>span {
             align-items: end;
             font-size: 10px;
             padding-bottom: 6px;
         }
 
         &--label {
+            font-size: 11px;
             text-transform: uppercase;
         }
 
@@ -40,7 +47,7 @@
             background-color: #71edb9;
         }
 
-        &--cp{
+        &--cp {
             background-color: #c35fff;
         }
     }

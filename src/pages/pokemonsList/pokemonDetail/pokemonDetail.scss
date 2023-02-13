@@ -4,22 +4,10 @@
     display: flex;
     padding: 15px 0;
 
-    &>img {
-        height: auto;
-        padding: 15px;
-        width: 150px;
-    }
-
     &:hover{
         >img{
             animation: .5s ease-in-out infinite bounce-slow;
         }
-    }
-
-    &__info-container{
-        align-items: start;
-        display: flex;
-        flex-direction: column;
     }
 
     &__name {

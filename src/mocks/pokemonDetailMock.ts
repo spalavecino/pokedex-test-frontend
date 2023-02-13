@@ -1,5 +1,3 @@
-import { PokemonInfo } from "../types";
-
 export const pokemonDetailMock = {
     abilities: [
         {
@@ -11450,5 +11448,5 @@ export const pokemonDetailMock = {
             }
         }
     ],
-    "weight": 69
+    weight: 69
 }

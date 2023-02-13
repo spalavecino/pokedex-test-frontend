@@ -1,0 +1,16 @@
+.PokemonInfo{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+
+    &__name{
+        color: #666;
+        font-size: 35px;
+        text-transform: capitalize;
+    }
+
+    &__description {
+        margin: auto;
+        text-align: left;
+    }
+}

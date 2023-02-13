@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Action } from './types';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,6 +11,10 @@ const root = ReactDOM.createRoot(
 
 interface MockerContextValue {
   mock: boolean
+}
+
+interface PokemonContext {
+  dispatch: (action: Action) => any,
 }
 
 const MockerContext: Context<MockerContextValue> = createContext<MockerContextValue>({ mock: false })

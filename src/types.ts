@@ -1,7 +1,6 @@
 export interface PokemonItemResponse {
     name: string,
     url: string
-
 }
 
 export interface PokemonsResponse {
@@ -27,17 +26,28 @@ interface PokemonType {
     }
 }
 
+interface Move {
+    move: { name: string }
+}
+
 export interface PokemonInfo {
     abilities: Array<Ability>,
     height: number,
     id: number,
     name: string,
+    moves: Array<Move>,
     sprites: {
         other: {
             ["official-artwork"]: {
                 front_default: string
             }
         }
-    }
-    types: Array<PokemonType>
+    },
+    types: Array<PokemonType>,
+    weight: number
+}
+
+export interface Action<Data = any> {
+    type: string,
+    data?: Data
 }

@@ -1,0 +1,1 @@
+export const LIMIT_GET_POKEMONS = 20
